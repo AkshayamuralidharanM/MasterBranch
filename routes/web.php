@@ -14,16 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
-
-Route::post('/', [EmployeeController::class, 'create']);
-Route::get('employee.store', [EmployeeController::class,'store']);
+Route::get('/',[EmployeeController::class,'index'])->name('mainPage');
+Route::get('/create', [EmployeeController::class, 'create']);
+Route::post('/employeestore', [EmployeeController::class,'store']);
 Route::get('/fetch-employee', [EmployeeController::class, 'fetch_employee']);
+Route::get('/getdesignation/{department_id}', [EmployeeController::class,'getdesignation'])->name('getdesignation');
+Route::get('/getdepartment', [EmployeeController::class,'getdepartment'])->name('getdepartment');
 
 Route::get('/edit_emp/{emp_id}', [EmployeeController::class,'edit_employee']);
-Route::post('/update-emp/{emp_id}', [EmployeeController::class,'update_employee']);
+Route::post('/update-emp', [EmployeeController::class,'update_employee']);
+Route::get('/delete-emp/{emp_id}', [EmployeeController::class,'delete_employee']);
+
+Route::get('/getDepartmentName/{id}', [EmployeeController::class, 'getDepartmentName']);
+Route::get('/getDesignationName/{id}', [EmployeeController::class, 'getDesignationName']);
 // Route::get('', [EmployeeController::class,'']);      
   
 

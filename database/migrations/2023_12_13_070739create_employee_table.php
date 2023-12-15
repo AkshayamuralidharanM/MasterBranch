@@ -21,10 +21,12 @@ return new class extends Migration
             $table->string('address');
             $table->string('image');
             $table->date('dob');
-            $table->string('department');
+            $table->unsignedBigInteger('department_id');
             $table->date('doj');
-            $table->string('designation');
+            $table->unsignedBigInteger('designation_id');
             $table->timestamps();
+            $table->foreign('department_id')->references('id')->on('department');
+            $table->foreign('designation_id')->references('id')->on('designation');
         });
     }
 
